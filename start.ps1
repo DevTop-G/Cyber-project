@@ -8,7 +8,7 @@ Write-Host "🛡️ Starting AegisAI Integrated System..."
 
 # Pre-startup: Clean up existing processes on ports 3001 and 5001
 Write-Host "🧹 Cleaning up previous instances..."
-Get-NetTCPConnection -LocalPort 3001, 5001 -ErrorAction SilentlyContinue | ForEach-Object { 
+Get-NetTCPConnection -LocalPort 3000, 5001 -ErrorAction SilentlyContinue | ForEach-Object { 
     try { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue } catch {} 
 }
 Start-Sleep -Seconds 1
