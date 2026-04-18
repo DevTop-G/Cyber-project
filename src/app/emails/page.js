@@ -184,9 +184,19 @@ export default function EmailsPage() {
     <main className="flex-1 h-full overflow-hidden w-full p-2 md:p-6 z-0 flex gap-6">
       <section className="flex-1 overflow-y-auto space-y-6">
         <header className="flex items-center justify-between py-1 px-2">
-          <h1 className="text-2xl md:text-3xl font-medium text-slate-800 tracking-tight">
-            Inbox
-          </h1>
+          <div className="flex items-center gap-4">
+            <h1 className="text-2xl md:text-3xl font-medium text-slate-800 tracking-tight">
+              Inbox
+            </h1>
+            <button 
+              onClick={fetchEmails}
+              disabled={loading}
+              className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-500 disabled:opacity-50"
+              title="Refresh Emails"
+            >
+              <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin text-blue-500' : ''}`} />
+            </button>
+          </div>
           <p className="text-sm text-slate-500 font-medium">
             {emails.length} conversations
           </p>

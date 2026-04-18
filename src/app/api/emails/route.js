@@ -114,7 +114,14 @@ export async function GET() {
 
     return NextResponse.json(details);
   } catch (error) {
-    console.error('Gmail API Error. Falling back to mock data:', error.message);
+    console.error('Gmail API Error Analysis:');
+    console.error('- Message:', error.message);
+    if (error.response) {
+      console.error('- Status:', error.response.status);
+      console.error('- Data:', JSON.stringify(error.response.data, null, 2));
+    }
+    console.error('- Stack:', error.stack);
+    
     const mockDetails = [
       {
         id: 'error-fallback-1',

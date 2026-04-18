@@ -22,7 +22,7 @@ export async function POST(req) {
       console.log('Forwarding to AI Space:', PYTHON_BRIDGE_URL);
       
       // Hugging Face Gradio API expects {"data": [arg1, arg2...]}
-      const body = JSON.stringify({ data: [input.trim()] });
+      const body = JSON.stringify({ input: input.trim() });
       
       bridgeResponse = await fetch(PYTHON_BRIDGE_URL, {
         method: 'POST',
