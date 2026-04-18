@@ -22,6 +22,7 @@ import {
   setCachedAnalysis,
   deleteCachedAnalysis,
 } from '../../services/email-analysis-cache';
+import { saveScan } from '../../services/scan-history';
 
 const PENDING_ANALYSIS = {
   riskLevel: 'Safe',
@@ -81,6 +82,7 @@ export default function EmailsPage() {
           analyzeEmail(email)
             .then((analysis) => {
               setCachedAnalysis(email.id, analysis);
+              saveScan(`Email: ${email.subject}`, false, analysis, 'Email');
               setEmails((prev) =>
                 prev.map((e) =>
                   e.id === email.id ? { ...e, analysis, _cached: true } : e
@@ -113,6 +115,7 @@ export default function EmailsPage() {
       deleteCachedAnalysis(selectedEmail.id);
       const analysis = await analyzeEmail(selectedEmail);
       setCachedAnalysis(selectedEmail.id, analysis);
+      saveScan(`Email (Retest): ${selectedEmail.subject}`, false, analysis, 'Email');
       const updated = { ...selectedEmail, analysis, _cached: true };
       setSelectedEmail(updated);
       setEmails((prev) =>

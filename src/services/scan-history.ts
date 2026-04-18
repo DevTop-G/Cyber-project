@@ -5,6 +5,7 @@ export interface ScanRecord {
   timestamp: number;
   input: string;
   hasImage: boolean;
+  source: string;
   result: ThreatAnalysisResult;
 }
 
@@ -13,13 +14,15 @@ const STORAGE_KEY = 'aegis_scan_history';
 export function saveScan(
   input: string,
   hasImage: boolean,
-  result: ThreatAnalysisResult
+  result: ThreatAnalysisResult,
+  source: string = 'Scanner'
 ): ScanRecord {
   const record: ScanRecord = {
     id: Date.now().toString(36) + Math.random().toString(36).slice(2),
     timestamp: Date.now(),
     input: input.trim() || '[Image only]',
     hasImage,
+    source,
     result,
   };
   try {

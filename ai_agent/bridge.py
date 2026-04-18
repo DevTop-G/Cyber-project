@@ -98,6 +98,7 @@ def analyze():
                 "promptInjectionScore": round(result["detailed_results"]["agent4"].get("confidence", 0), 3),
                 "promptInjectionDetected": result["detailed_results"]["agent4"].get("prompt_injection_detected", False),
                 "attackCategories": result["detailed_results"]["agent4"].get("attack_categories", []),
+                "attackerActor": _profile_actor(result),
             },
         }
         
@@ -108,6 +109,32 @@ def analyze():
         return jsonify(response_data)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+def _profile_actor(result):
+    """Heuristic logic to categorize the threat actor"""
+    threat_types = [t.lower() for t in result.get("threat_types", [])]
+    threat_str = " ".join(threat_types)
+    prompt_inj = result["detailed_results"].get("agent4", {})
+    content = result["detailed_results"].get("agent2", {})
+    
+    # Prioritize State-sponsored for complex/technical attacks
+    if any(x in threat_str for x in ["advanced", "apt", "state", "specialized", "injection"]) or prompt_inj.get("confidence", 0) > 0.8:
+        return "State-sponsored Actors"
+    
+    # Internal/Privileged hints for Disgruntled Insiders
+    if any(x in threat_str for x in ["insider", "internal", "unauthorized", "privileged"]):
+        return "Disgruntled Insiders"
+        
+    # Hacktivists for reputation/protest based attacks
+    if content.get("sentiment_label") == "NEGATIVE" and any(x in threat_str for x in ["brand", "reputation", "protest", "defacement", "scam"]):
+        if content.get("sentiment_score", 0) > 0.7:
+            return "Hacktivists"
+            
+    # Default to Organized Criminal Groups for financial/bulk fraud
+    return "Organized Criminal Groups"
+
+# Add profiling method to app instance
+app.profile_actor = _profile_actor
 
 
 if __name__ == "__main__":

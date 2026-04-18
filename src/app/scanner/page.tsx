@@ -81,7 +81,8 @@ export default function Home() {
 
       const analysis = await analyzeThreat(input, base64Data, mimeType);
       setResult(analysis);
-      saveScan(input, !!imageFile, analysis);
+      const source = imageFile ? 'File Attachment' : 'Direct Message';
+      saveScan(input, !!imageFile, analysis, source);
     } catch (err) {
       console.error(err);
       setError(err instanceof Error ? err.message : 'An error occurred during analysis.');
