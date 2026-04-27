@@ -229,12 +229,19 @@ gantt
 
 ## References
 
-- UK Government (2025). *Cyber Security Breaches Survey 2025*. Department for Science, Innovation and Technology.
-- He, P. et al. (2021). DeBERTa: Decoding-enhanced BERT with Disentangled Attention. *ICLR 2021*.
-- Sanh, V. et al. (2019). DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter. *NeurIPS Workshop*.
-- Reimers, N. and Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. *EMNLP 2019*.
-- scikit-learn documentation: Multinomial Naive Bayes, Support Vector Machines.
-- Google (2026). Gmail API Reference. *Google Developers*.
+Department for Science, Innovation and Technology (2025) *Cyber Security Breaches Survey 2025*. London: UK Government. Available at: [https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025](https://www.gov.uk/government/statistics/cyber-security-breaches-survey-2025) (Accessed: 10 February 2026).
+
+Google (2026) *Gmail API Reference*. Google Developers. Available at: [https://developers.google.com/gmail/api/reference/rest](https://developers.google.com/gmail/api/reference/rest) (Accessed: 22 March 2026).
+
+He, P., Liu, X., Gao, J. and Chen, W. (2021) 'DeBERTa: Decoding-enhanced BERT with Disentangled Attention', *Proceedings of the International Conference on Learning Representations (ICLR 2021)*. Available at: [https://arxiv.org/abs/2006.03654](https://arxiv.org/abs/2006.03654) (Accessed: 15 February 2026).
+
+Reimers, N. and Gurevych, I. (2019) 'Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks', *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP)*. Hong Kong, November 2019. Available at: [https://arxiv.org/abs/1908.10084](https://arxiv.org/abs/1908.10084) (Accessed: 18 February 2026).
+
+Sanh, V., Debut, L., Chaumond, J. and Wolf, T. (2019) 'DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter', *NeurIPS 2019 Workshop on Energy Efficient Machine Learning and Cognitive Computing*. Available at: [https://arxiv.org/abs/1910.01108](https://arxiv.org/abs/1910.01108) (Accessed: 14 February 2026).
+
+scikit-learn (2026) *Naive Bayes — scikit-learn documentation*. Available at: [https://scikit-learn.org/stable/modules/naive_bayes.html](https://scikit-learn.org/stable/modules/naive_bayes.html) (Accessed: 5 March 2026).
+
+scikit-learn (2026) *Support Vector Machines — scikit-learn documentation*. Available at: [https://scikit-learn.org/stable/modules/svm.html](https://scikit-learn.org/stable/modules/svm.html) (Accessed: 5 March 2026).
 
 ---
 
