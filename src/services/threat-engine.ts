@@ -14,6 +14,7 @@ export interface ThreatAnalysisResult {
     promptInjectionScore: number;
     promptInjectionDetected: boolean;
     attackCategories: string[];
+    attackerActor?: string;
   };
 }
 

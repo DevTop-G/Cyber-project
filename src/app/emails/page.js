@@ -39,10 +39,15 @@ async function analyzeEmail(email) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ input }),
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error('Analysis failed');
-  return res.json();
+  const data = await res.json();
+  // Validate the response is a real analysis, not an error wrapper
+  if (data.error || !data.riskLevel) {
+    throw new Error(data.error || 'Invalid analysis response');
+  }
+  return data;
 }
 
 export default function EmailsPage() {
